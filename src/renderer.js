@@ -7,10 +7,6 @@ module.exports = function ( context ) {
 	const React = context.React
 	const remote = context.electron.remote
 
-	// Development Helpers
-	remote.getCurrentWindow().openDevTools()
-	window.reload = remote.getCurrentWebContents().reloadIgnoringCache
-
 	hooks.addFilter( 'siteInfoMoreMenu', function( menu, site ) {
 	    menu.push( {
 	        label: 'Plugins',
