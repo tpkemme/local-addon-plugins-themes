@@ -1,0 +1,194 @@
+/**
+ *
+ *     d888888o. 8888888 8888888888 `8.`8888.      ,8' 8 8888         8 8888888888     d888888o.
+ *   .`8888:' `88.     8 8888        `8.`8888.    ,8'  8 8888         8 8888         .`8888:' `88.
+ *   8.`8888.   Y8     8 8888         `8.`8888.  ,8'   8 8888         8 8888         8.`8888.   Y8
+ *  ` 8.`8888.         8 8888          `8.`8888.,8'    8 8888         8 8888         `8.`8888.
+ *  `8  .`8888.        8 8888           `8.`88888'     8 8888         8 888888888888  `8.`8888.
+ *    `8 .`8888.       8 8888            `8. 8888      8 8888         8 8888           `8.`8888.
+ *      `8.`8888.      8 8888             `8 8888      8 8888         8 8888            `8.`8888.
+ *  8b   `8.`8888.     8 8888              8 8888      8 8888         8 8888        8b   `8.`8888.
+ *  `8b.  ;8.`8888     8 8888              8 8888      8 8888         8 8888        `8b.  ;8.`8888
+ *   `Y8888P ,88P'     8 8888              8 8888      8 888888888888 8 888888888888 `Y8888P ,88P'
+ */
+
+/**
+ * ______ _             _
+ * | ___ \ |           (_)
+ * | |_/ / |_   _  __ _ _ _ __  ___
+ * |  __/| | | | |/ _` | | '_ \/ __|
+ * | |   | | |_| | (_| | | | | \__ \
+ * \_|   |_|\__,_|\__, |_|_| |_|___/
+ *                 __/ |
+ *                |___/
+ */
+.plugins-container{
+	overflow: 'scroll';
+	display: 'flex';
+	flexDirection: 'column';
+	flex: 1;
+	padding: '0 5%';{
+    position: relative;
+}
+
+.plugins-container .form-actions {
+    bottom: 0;
+    position: absolute;
+}
+
+.plugins-table {
+    position: absolute;
+    top: 0;
+    display: block;
+    bottom: 53px;
+    overflow-y: auto;
+}
+
+.plugins-table tr:active {
+    color: inherit !important;
+    background: inherit !important;
+}
+
+.plugins-table.table-striped tr:nth-child(even):active {
+    background: #f5f5f4 !important;
+}
+
+.plugins-table input {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    width: 100%;
+}
+
+.plugins-table td {
+    padding: 0 15px;
+}
+
+.plugins-table input {
+    width: 100%;
+    border: 0;
+    padding: 3px 4px;
+    text-overflow: ellipsis;
+}
+
+.plugins-table .icon-cancel-circled {
+    color: #999;
+}
+
+td.plugins-table-source {
+    width: 70%;
+}
+
+td.plugins-table-source input {
+    padding-right: 30px;
+}
+
+td.plugins-table-source {
+    position: relative;
+}
+
+td.plugins-table-source .icon {
+    position: absolute;
+    right: 22px;
+    top: 3px;
+    color: #999;
+    display: block;
+}
+
+td.plugins-table-dest {
+    width: 30%;
+}
+
+.plugins-table input:focus {
+    outline: -webkit-focus-ring-color solid 2px;
+}
+
+
+/**
+ *  _____ _
+ * |_   _| |
+ *   | | | |__   ___ _ __ ___   ___  ___
+ *   | | | '_ \ / _ \ '_ ` _ \ / _ \/ __|
+ *   | | | | | |  __/ | | | | |  __/\__ \
+ *   \_/ |_| |_|\___|_| |_| |_|\___||___/
+ */
+.themes-container{
+	overflow: 'scroll';
+	display: 'flex';
+	flexDirection: 'column';
+	flex: 1;
+	padding: '0 5%';{
+    position: relative;
+}
+
+.themes-container .form-actions {
+    bottom: 0;
+    position: absolute;
+}
+
+.themes-table {
+    position: absolute;
+    top: 0;
+    display: block;
+    bottom: 53px;
+    overflow-y: auto;
+}
+
+.themes-table tr:active {
+    color: inherit !important;
+    background: inherit !important;
+}
+
+.themes-table.table-striped tr:nth-child(even):active {
+    background: #f5f5f4 !important;
+}
+
+.themes-table input {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    width: 100%;
+}
+
+.themes-table td {
+    padding: 0 15px;
+}
+
+.themes-table input {
+    width: 100%;
+    border: 0;
+    padding: 3px 4px;
+    text-overflow: ellipsis;
+}
+
+.themes-table .icon-cancel-circled {
+    color: #999;
+}
+
+td.themes-table-source {
+    width: 70%;
+}
+
+td.themes-table-source input {
+    padding-right: 30px;
+}
+
+td.themes-table-source {
+    position: relative;
+}
+
+td.themes-table-source .icon {
+    position: absolute;
+    right: 22px;
+    top: 3px;
+    color: #999;
+    display: block;
+}
+
+td.themes-table-dest {
+    width: 30%;
+}
+
+.themes-table input:focus {
+    outline: -webkit-focus-ring-color solid 2px;
+}

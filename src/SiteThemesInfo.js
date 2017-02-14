@@ -32,8 +32,8 @@ module.exports = function( context ) {
         }
 
 		getThemeList() {
-			this.setState( { activeContent: <p>loading...</p>} )
-			this.setState( { inactiveContent: <p>loading...</p>} )
+			this.setState( { activeContent: <tr><td className="themes-table-dest">loading...</td></tr>} )
+			this.setState( { inactiveContent: <tr><td className="themes-table-dest">loading...</td></tr>} )
 
 		    // get site object using siteID
 		    let site = this.props.sites[ this.props.params.siteID ]
@@ -45,15 +45,15 @@ module.exports = function( context ) {
 		    childProcess.exec( activeCommand, { env: context.environment.dockerEnv }, (error, stdout, stderr) => {
 		        // Display error message if there's an issue
 		        if (error) {
-		            this.setState( { activeContent:  <p>Error retrieving active theme: <pre>{ stderr }</pre></p> } )
+		            this.setState( { activeContent:  <tr><td className="themes-table-dest">Error retrieving active theme: <pre>{ stderr }</pre></td></tr> } )
 		        } else {
 		            // split list into array
 		            let plugins = stdout.trim().split( "\n" )
 		            // Only create unordered list if there are plugins to list
 		            if ( plugins.length && plugins[0].length > 1 ) {
-		                this.setState( { activeContent: <ul>{ plugins.map( (item) => <li key={ plugins.indexOf(item) }>{ item }</li> ) }</ul> } )
+		                this.setState( { activeContent: plugins.map( (item) => <tr><td className="themes-table-dest" key={ plugins.indexOf(item) }>{ item }</td></tr> ) } )
 		            } else {
-		                this.setState( { activeContent: <p>No active theme.</p> } )
+		                this.setState( { activeContent: <tr><td className="themes-table-dest">No active theme.</td></tr> } )
 		            }
 		        }
 		    } );
@@ -65,15 +65,15 @@ module.exports = function( context ) {
 		    childProcess.exec( inactiveCommand, { env: context.environment.dockerEnv }, (error, stdout, stderr) => {
 		        // Display error message if there's an issue
 		        if (error) {
-		            this.setState( { inactiveContent:  <p>Error retrieving inactive theme list: <pre>{ stderr }</pre></p> } )
+		            this.setState( { inactiveContent:  <tr><td className="themes-table-dest">Error retrieving inactive theme list: <pre>{ stderr }</pre></td></tr> } )
 		        } else {
 		            // split list into array
 		            let plugins = stdout.trim().split( "\n" )
 		            // Only create unordered list if there are plugins to list
 		            if ( plugins.length && plugins[0].length > 1 ) {
-		                this.setState( { inactiveContent: <ul>{ plugins.map( (item) => <li key={ plugins.indexOf(item) }>{ item }</li> ) }</ul> } )
+		                this.setState( { inactiveContent: plugins.map( (item) => <tr><td className="themes-table-dest" key={ plugins.indexOf(item) }>{ item }</td></tr> ) } )
 		            } else {
-		                this.setState( { inactiveContent: <p>No inactive themes.</p> } )
+		                this.setState( { inactiveContent: <tr><td className="themes-table-dest">No inactive themes.</td></tr> } )
 		            }
 		        }
 		    } );
@@ -84,13 +84,31 @@ module.exports = function( context ) {
 
         render() {
             return (
-                <div style={{ overflow: 'scroll', display: 'flex', flexDirection: 'column', flex: 1, padding: '0 5%' }}>
+				<div className="themes-container">
+					<link rel="stylesheet" href={this.stylesheetPath}/>
 					{ this.state.content }
-					<h3>Active Theme</h3>
-					{ this.state.activeContent }
-
-					<h3>Inactive Themes</h3>
-					{ this.state.inactiveContent }
+					<table className="table-striped themes-table">
+						<thead>
+						<tr>
+							<th>Active Theme</th>
+							<th>Path</th>
+						</tr>
+						</thead>
+						<tbody>
+						{ this.state.activeContent }
+						</tbody>
+					</table>
+					<table className="table-striped plugins-table">
+						<thead>
+						<tr>
+							<th>Inctive Theme</th>
+							<th>Path</th>
+						</tr>
+						</thead>
+						<tbody>
+						{ this.state.inactiveContent }
+						</tbody>
+					</table>
                 </div>
             );
         }
