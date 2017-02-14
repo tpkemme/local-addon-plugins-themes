@@ -1,4 +1,4 @@
-/* src/PluginsAndThemes.js */
+/* src/SitePluginsInfo.js */
 const childProcess = require ('child_process' )
 
 module.exports = function( context ) {
@@ -7,7 +7,7 @@ module.exports = function( context ) {
     const React = context.React
     const $ = context.jQuery
 
-    return class PluginsAndThemes extends Component {
+    return class SitePluginsInfo extends Component {
         constructor( props ) {
             super( props )
             // init class vars

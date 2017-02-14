@@ -1,19 +1,27 @@
 # Plugins and Themes Addon for Local By Flywheel
 
 ## Description
-Add this addon to Local By Flywheel to see the active and inactive plugins for each site.  Currently only lists plugins, the next release will feature the ability to activate, deactivate, and delete plugins.
+Add this addon to Local By Flywheel to see the active and inactive plugins for each site.  This addon currently lists active and inactive themes/plugins.
 
-## Quick Start
- 1. Clone this repo: `git clone git@github.com:JRGould/simple-pressmatic-addon.git my-pressmatic-addon && cd my-pressmatic-addon`
- 3. Run `npm install`
- 1. Run initial build: `npm run-script build`
- 1. Link into Local's `addon` directory: `ln -s "$(pwd)" ~/Library/Application Support/Local by Flywheel/addons`
- 1. Restart Local and activate addon from Settings > Addons
+## Installation for Non-Developers
+
+ 1. Download the latest release as a zip
+ 2. Extract contents of zip to desired location
+ 3. Open Local by Flywheel and go to Settings
+ 4. Click 'Addons' and 'Install Addon' and choose the location from step 2. 
+
+## Quick Start for Developers
+ 1. Clone this repo: `git clone git@github.com:JRGould/local-addon-plugins-themes.git local-addon-plugins-themes`
+ 2. Run `npm install`
+ 3. Run initial build: `npm run-script build`
+ 4. Link into Local's `addon` directory: `ln -s "$(pwd)" ~/Library/Application Support/Local by Flywheel/addons`
+ 5. Restart Local and activate addon from Settings > Addons
 
 ## Developing
 
  - To automatically transpile your JS while developing, just start watch task: `npm run-script watch`.
  - The only thing this starter addon currently does is open dev tools in Local and add a `reload()` function to the window object, type `reload()` into the dev tools console after you've saved/transpiled to see your changes.
+ - I've noticed that using the symbolic link described in step 4. of the Quick Start can cause ridiculously long loading times.  It's probably easier to develop directory inside the addon folder.
 
 
 ### Installing Dev Dependencies
