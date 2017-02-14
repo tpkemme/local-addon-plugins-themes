@@ -1,18 +1,18 @@
 {
-  "name": "local-addon-stuff",
-  "productName": "Addon for Local",
+  "name": "local-addon-plugins-themes",
+  "productName": "Plugins And Themes Addon for Local by Flywheel",
   "version": "1.0.0",
-  "author": "Jeff Gould",
+  "author": "Tyler Kemme",
   "contributors": [
     {
-      "name": "Jeff Gould",
-      "email": "jr@deliciousbrains.com"
+      "name": "Tyler Kemme",
+      "email": "tylerkemme@gmail.com"
     }
   ],
   "keywords": [
     "local-addon"
   ],
-  "description": "A simple addon for Local",
+  "description": "An addon for Local that lists active/inactive plugins and themes.",
   "renderer": "lib/renderer.js",
   "license": "MIT",
   "scripts": {

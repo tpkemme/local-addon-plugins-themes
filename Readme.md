@@ -1,6 +1,11 @@
+# Plugins and Themes Addon for Local By Flywheel
+
+## Description
+Add this addon to Local By Flywheel to see the active and inactive plugins for each site.  Currently only lists plugins, the next release will feature the ability to activate, deactivate, and delete plugins.
+
 ## Quick Start
  1. Clone this repo: `git clone git@github.com:JRGould/simple-pressmatic-addon.git my-pressmatic-addon && cd my-pressmatic-addon`
- 1. Run `npm install`
+ 3. Run `npm install`
  1. Run initial build: `npm run-script build`
  1. Link into Local's `addon` directory: `ln -s "$(pwd)" ~/Library/Application Support/Local by Flywheel/addons`
  1. Restart Local and activate addon from Settings > Addons

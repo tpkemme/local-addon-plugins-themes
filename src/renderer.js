@@ -10,21 +10,21 @@ module.exports = function ( context ) {
 	hooks.addFilter( 'siteInfoMoreMenu', function( menu, site ) {
 	    menu.push( {
 	        label: 'Plugins',
-	        enabled: !this.context.router.isActive(`/site-info/${site.id}/my-component`),
+	        enabled: !this.context.router.isActive(`/site-info/${site.id}/plugins-themes`),
 	        click: () => {
-	            context.events.send('goToRoute', `/site-info/${site.id}/my-component`);
+	            context.events.send('goToRoute', `/site-info/${site.id}/plugins-themes`);
 	        }
 	    } );
 	    return menu;
 	} );
 
 		// Require component
-	const MyComponent = require('./MyComponent')(context)
+	const PluginsAndThemes = require('./PluginsAndThemes')(context)
 	// Get router handle
 	const Router = context.ReactRouter
 	// Add Route
 	hooks.addContent( 'routesSiteInfo', () => {
-	    return <Router.Route key="site-info-my-component" path="/site-info/:siteID/my-component" component={ MyComponent }/>
+	    return <Router.Route key="site-info-plugins-themes" path="/site-info/:siteID/plugins-themes" component={ PluginsAndThemes }/>
 	} );
 
 
