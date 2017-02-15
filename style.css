@@ -23,11 +23,11 @@
  *                |___/
  */
 .plugins-container{
-	overflow: 'scroll';
-	display: 'flex';
-	flexDirection: 'column';
+	overflow: scroll;
+	display: flex;
+	flexDirection: column;
 	flex: 1;
-	padding: '0 5%';{
+	padding: 0 5%;
     position: relative;
 }
 
@@ -75,16 +75,8 @@
     color: #999;
 }
 
-td.plugins-table-source {
-    width: 70%;
-}
-
-td.plugins-table-source input {
+.plugins-table-source input {
     padding-right: 30px;
-}
-
-td.plugins-table-source {
-    position: relative;
 }
 
 td.plugins-table-source .icon {
@@ -95,8 +87,14 @@ td.plugins-table-source .icon {
     display: block;
 }
 
-td.plugins-table-dest {
+.plugins-table-source{
+    width: 70%;
+	position: relative;
+}
+
+.plugins-table-dest{
     width: 30%;
+	position: relative;
 }
 
 .plugins-table input:focus {
@@ -113,11 +111,11 @@ td.plugins-table-dest {
  *   \_/ |_| |_|\___|_| |_| |_|\___||___/
  */
 .themes-container{
-	overflow: 'scroll';
-	display: 'flex';
-	flexDirection: 'column';
+	overflow: scroll;
+	display: flex;
+	flexDirection: column;
 	flex: 1;
-	padding: '0 5%';{
+	padding: 0 5%;
     position: relative;
 }
 

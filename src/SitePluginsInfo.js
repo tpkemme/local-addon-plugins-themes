@@ -1,5 +1,6 @@
 /* src/SitePluginsInfo.js */
 const childProcess = require ('child_process' )
+const path = require('path');
 
 module.exports = function( context ) {
 
@@ -16,6 +17,8 @@ module.exports = function( context ) {
 				inactiveContent: null,
 				content: null
 			}
+
+			this.stylesheetPath = path.resolve(__dirname, '../style.css');
         }
 
         componentDidMount() {
@@ -32,8 +35,8 @@ module.exports = function( context ) {
         }
 
 		getPluginList() {
-			this.setState( { activeContent: <p>loading...</p>} )
-			this.setState( { inactiveContent: <p>loading...</p>} )
+			this.setState( { activeContent: <tr><td className="plugins-table-source">loading...</td><td className="plugins-table-dest"> - </td></tr>} )
+			this.setState( { inactiveContent: <tr><td className="plugins-table-source">loading...</td><td className="plugins-table-dest"> - </td></tr>} )
 
 		    // get site object using siteID
 		    let site = this.props.sites[ this.props.params.siteID ]
@@ -45,15 +48,15 @@ module.exports = function( context ) {
 		    childProcess.exec( activeCommand, { env: context.environment.dockerEnv }, (error, stdout, stderr) => {
 		        // Display error message if there's an issue
 		        if (error) {
-		            this.setState( { activeContent:  <p>Error retrieving active plugin list: <pre>{ stderr }</pre></p> } )
+		            this.setState( { activeContent:  <tr><td className="plugins-table-source">Error retrieving active plugin: <pre>{ stderr }</pre></td><td className="plugins-table-dest"> - </td></tr> } )
 		        } else {
 		            // split list into array
 		            let plugins = stdout.trim().split( "\n" )
 		            // Only create unordered list if there are plugins to list
 		            if ( plugins.length && plugins[0].length > 1 ) {
-		                this.setState( { activeContent: <ul>{ plugins.map( (item) => <li key={ plugins.indexOf(item) }>{ item }</li> ) }</ul> } )
+		                this.setState( { activeContent: plugins.map( (item) => <tr><td className="plugins-table-source" key={ plugins.indexOf(item) }>{ item }</td><td className="plugins-table-dest">Path</td></tr> ) } )
 		            } else {
-		                this.setState( { activeContent: <p>No active plugins.</p> } )
+		                this.setState( { activeContent: <tr><td className="plugins-table-source">No active plugins.</td><td className="plugins-table-dest"> - </td></tr> } )
 		            }
 		        }
 		    } );
@@ -65,15 +68,15 @@ module.exports = function( context ) {
 		    childProcess.exec( inactiveCommand, { env: context.environment.dockerEnv }, (error, stdout, stderr) => {
 		        // Display error message if there's an issue
 		        if (error) {
-		            this.setState( { inactiveContent:  <p>Error retrieving inactive plugin list: <pre>{ stderr }</pre></p> } )
+		            this.setState( { inactiveContent:  <tr><td className="plugins-table-source">Error retrieving inactive plugin list: <pre>{ stderr }</pre></td><td className="plugins-table-dest"> - </td></tr> } )
 		        } else {
 		            // split list into array
 		            let plugins = stdout.trim().split( "\n" )
 		            // Only create unordered list if there are plugins to list
 		            if ( plugins.length && plugins[0].length > 1 ) {
-		                this.setState( { inactiveContent: <ul>{ plugins.map( (item) => <li key={ plugins.indexOf(item) }>{ item }</li> ) }</ul> } )
+		                this.setState( { inactiveContent: plugins.map( (item) => <tr><td className="plugins-table-source" key={ plugins.indexOf(item) }>{ item }</td><td className="plugins-table-dest">Path</td></tr> ) } )
 		            } else {
-		                this.setState( { inactiveContent: <p>No inactive plugins.</p> } )
+		                this.setState( { inactiveContent: <tr><td className="plugins-table-source">No inactive plugins.</td><td className="plugins-table-dest"> - </td></tr> } )
 		            }
 		        }
 		    } );
@@ -84,13 +87,33 @@ module.exports = function( context ) {
 
         render() {
             return (
-                <div style={{ overflow: 'scroll', display: 'flex', flexDirection: 'column', flex: 1, padding: '0 5%' }}>
+				<div className="plugins-container">
+					<link rel="stylesheet" href={this.stylesheetPath}/>
 					{ this.state.content }
-					<h3>Active Plugins</h3>
-					{ this.state.activeContent }
+					<table className="table-striped plugins-table">
+						<thead>
+						<tr>
+							<th className="plugins-table-source">Active Plugin</th>
+							<th className="plugins-table-dest">Path</th>
+						</tr>
+						</thead>
+						<tbody>
+						{ this.state.activeContent }
+						</tbody>
+					</table>
 
-					<h3>Inactive Plugins</h3>
-					{ this.state.inactiveContent }
+
+					<table className="table-striped plugins-table">
+						<thead>
+						<tr>
+							<th className="plugins-table-source">Inactive Plugin</th>
+							<th className="plugins-table-dest">Path</th>
+						</tr>
+						</thead>
+						<tbody>
+						{ this.state.inactiveContent }
+						</tbody>
+					</table>
                 </div>
             );
         }

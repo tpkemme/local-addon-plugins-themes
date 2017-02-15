@@ -38,42 +38,42 @@ module.exports = function( context ) {
 		    // get site object using siteID
 		    let site = this.props.sites[ this.props.params.siteID ]
 
-		    // construct command using bundled docker binary to execute 'wp plugin list' inside container for active plugins
+		    // construct command using bundled docker binary to execute 'wp theme list' inside container for active themes
 		    let activeCommand = `${context.environment.dockerPath} exec ${site.container} wp theme list --status=active --path=/app/public --field=name --allow-root`
 
 		    // execute command in docker env and run callback when it returns
 		    childProcess.exec( activeCommand, { env: context.environment.dockerEnv }, (error, stdout, stderr) => {
 		        // Display error message if there's an issue
 		        if (error) {
-		            this.setState( { activeContent:  <tr><td className="themes-table-dest">Error retrieving active theme: <pre>{ stderr }</pre></td></tr> } )
+		            this.setState( { activeContent:  <tr><td className="themes-table-source">Error retrieving active theme: <pre>{ stderr }</pre></td></tr> } )
 		        } else {
 		            // split list into array
-		            let plugins = stdout.trim().split( "\n" )
-		            // Only create unordered list if there are plugins to list
-		            if ( plugins.length && plugins[0].length > 1 ) {
-		                this.setState( { activeContent: plugins.map( (item) => <tr><td className="themes-table-dest" key={ plugins.indexOf(item) }>{ item }</td></tr> ) } )
+		            let themes = stdout.trim().split( "\n" )
+		            // Only create unordered list if there are themes to list
+		            if ( themes.length && themes[0].length > 1 ) {
+		                this.setState( { activeContent: themes.map( (item) => <tr><td className="themes-table-source" key={ themes.indexOf(item) }>{ item }</td></tr> ) } )
 		            } else {
-		                this.setState( { activeContent: <tr><td className="themes-table-dest">No active theme.</td></tr> } )
+		                this.setState( { activeContent: <tr><td className="themes-table-source">No active theme.</td></tr> } )
 		            }
 		        }
 		    } );
 
-		    // construct command using bundled docker binary to execute 'wp plugin list' inside container for active plugins
+		    // construct command using bundled docker binary to execute 'wp theme list' inside container for active themes
 		    let inactiveCommand = `${context.environment.dockerPath} exec ${site.container} wp theme list --status=inactive --path=/app/public --field=name --allow-root`
 
 		    // execute command in docker env and run callback when it returns
 		    childProcess.exec( inactiveCommand, { env: context.environment.dockerEnv }, (error, stdout, stderr) => {
 		        // Display error message if there's an issue
 		        if (error) {
-		            this.setState( { inactiveContent:  <tr><td className="themes-table-dest">Error retrieving inactive theme list: <pre>{ stderr }</pre></td></tr> } )
+		            this.setState( { inactiveContent:  <tr><td className="themes-table-source">Error retrieving inactive theme list: <pre>{ stderr }</pre></td></tr> } )
 		        } else {
 		            // split list into array
-		            let plugins = stdout.trim().split( "\n" )
-		            // Only create unordered list if there are plugins to list
-		            if ( plugins.length && plugins[0].length > 1 ) {
-		                this.setState( { inactiveContent: plugins.map( (item) => <tr><td className="themes-table-dest" key={ plugins.indexOf(item) }>{ item }</td></tr> ) } )
+		            let themes = stdout.trim().split( "\n" )
+		            // Only create unordered list if there are themes to list
+		            if ( themes.length && themes[0].length > 1 ) {
+		                this.setState( { inactiveContent: themes.map( (item) => <tr><td className="themes-table-source" key={ themes.indexOf(item) }>{ item }</td></tr> ) } )
 		            } else {
-		                this.setState( { inactiveContent: <tr><td className="themes-table-dest">No inactive themes.</td></tr> } )
+		                this.setState( { inactiveContent: <tr><td className="themes-table-source">No inactive themes.</td></tr> } )
 		            }
 		        }
 		    } );
@@ -98,7 +98,9 @@ module.exports = function( context ) {
 						{ this.state.activeContent }
 						</tbody>
 					</table>
-					<table className="table-striped plugins-table">
+
+
+					<table className="table-striped themes-table">
 						<thead>
 						<tr>
 							<th>Inctive Theme</th>
