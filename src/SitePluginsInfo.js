@@ -35,48 +35,81 @@ module.exports = function( context ) {
         }
 
 		getPluginList() {
-			this.setState( { activeContent: <tr><td className="plugins-table-source">loading...</td><td className="plugins-table-dest"> - </td></tr>} )
-			this.setState( { inactiveContent: <tr><td className="plugins-table-source">loading...</td><td className="plugins-table-dest"> - </td></tr>} )
+
+			// Set loading message for active plugins
+			this.setState( { activeContent:
+				<tr>
+					<td className="plugins-table-name">loading...</td>
+					<td className="plugins-table-info"> - </td>
+					<td className="plugins-table-info"> - </td>
+				</tr> } )
+
+			// Set loading message for inactive plugins
+			this.setState( { inactiveContent:
+				<tr>
+					<td className="plugins-table-name">loading...</td>
+					<td className="plugins-table-info"> - </td>
+					<td className="plugins-table-info"> - </td>
+				</tr> } )
 
 		    // get site object using siteID
 		    let site = this.props.sites[ this.props.params.siteID ]
 
 		    // construct command using bundled docker binary to execute 'wp plugin list' inside container for active plugins
-		    let activeCommand = `${context.environment.dockerPath} exec ${site.container} wp plugin list --status=active --path=/app/public --field=name --allow-root`
+		    let activeCommand = `${context.environment.dockerPath} exec ${site.container} wp plugin list --status=active --path=/app/public --format=csv --allow-root`
 
 		    // execute command in docker env and run callback when it returns
 		    childProcess.exec( activeCommand, { env: context.environment.dockerEnv }, (error, stdout, stderr) => {
 		        // Display error message if there's an issue
 		        if (error) {
-		            this.setState( { activeContent:  <tr><td className="plugins-table-source">Error retrieving active plugin: <pre>{ stderr }</pre></td><td className="plugins-table-dest"> - </td></tr> } )
+		            this.setState( { activeContent:
+						<tr>
+							<td className="plugins-table-name">Error retrieving active plugin: <pre>{ stderr }</pre></td>
+							<td className="plugins-table-info"> - </td>
+							<td className="plugins-table-info"> - </td>
+						</tr> } )
 		        } else {
 		            // split list into array
 		            let plugins = stdout.trim().split( "\n" )
+					plugins.splice(0, 1)
+
 		            // Only create unordered list if there are plugins to list
 		            if ( plugins.length && plugins[0].length > 1 ) {
-		                this.setState( { activeContent: plugins.map( (item) => <tr><td className="plugins-table-source" key={ plugins.indexOf(item) }>{ item }</td><td className="plugins-table-dest">Path</td></tr> ) } )
+		                this.setState( { activeContent: plugins.map( (item) =>
+							<tr>
+								<td className="plugins-table-name" key={ plugins.indexOf(item) }>{ item.trim().split( "," )[0] }</td>
+								<td className="plugins-table-info">{ item.trim().split( "," )[2] }</td>
+								<td className="plugins-table-info">{ item.trim().split( "," )[3] }</td>
+							</tr> ) } )
 		            } else {
-		                this.setState( { activeContent: <tr><td className="plugins-table-source">No active plugins.</td><td className="plugins-table-dest"> - </td></tr> } )
+		                this.setState( { activeContent:
+							<tr>
+								<td className="plugins-table-name">No active plugins.</td>
+								<td className="plugins-table-info"> - </td>
+								<td className="plugins-table-info"> - </td>
+							</tr> } )
 		            }
 		        }
 		    } );
 
 		    // construct command using bundled docker binary to execute 'wp plugin list' inside container for active plugins
-		    let inactiveCommand = `${context.environment.dockerPath} exec ${site.container} wp plugin list --status=inactive --path=/app/public --field=name --allow-root`
+		    let inactiveCommand = `${context.environment.dockerPath} exec ${site.container} wp plugin list --status=inactive --path=/app/public --format=csv --allow-root`
 
 		    // execute command in docker env and run callback when it returns
 		    childProcess.exec( inactiveCommand, { env: context.environment.dockerEnv }, (error, stdout, stderr) => {
 		        // Display error message if there's an issue
 		        if (error) {
-		            this.setState( { inactiveContent:  <tr><td className="plugins-table-source">Error retrieving inactive plugin list: <pre>{ stderr }</pre></td><td className="plugins-table-dest"> - </td></tr> } )
+		            this.setState( { inactiveContent:  <tr><td className="plugins-table-name">Error retrieving inactive plugin list: <pre>{ stderr }</pre></td><td className="plugins-table-info"> - </td></tr> } )
 		        } else {
 		            // split list into array
 		            let plugins = stdout.trim().split( "\n" )
-		            // Only create unordered list if there are plugins to list
+					plugins.splice(0, 1);
+
+					// Only create unordered list if there are plugins to list
 		            if ( plugins.length && plugins[0].length > 1 ) {
-		                this.setState( { inactiveContent: plugins.map( (item) => <tr><td className="plugins-table-source" key={ plugins.indexOf(item) }>{ item }</td><td className="plugins-table-dest">Path</td></tr> ) } )
+		                this.setState( { inactiveContent: plugins.map( (item) => <tr><td className="plugins-table-name" key={ plugins.indexOf(item) }>{ item.trim().split( "," )[0] }</td><td className="plugins-table-info">{ item.trim().split( "," )[2] }</td><td className="plugins-table-info">{ item.trim().split( "," )[3] }</td></tr> ) } )
 		            } else {
-		                this.setState( { inactiveContent: <tr><td className="plugins-table-source">No inactive plugins.</td><td className="plugins-table-dest"> - </td></tr> } )
+		                this.setState( { inactiveContent: <tr><td className="plugins-table-name">No inactive plugins.</td><td className="plugins-table-info"> - </td></tr> } )
 		            }
 		        }
 		    } );
@@ -93,8 +126,9 @@ module.exports = function( context ) {
 					<table className="table-striped plugins-table">
 						<thead>
 						<tr>
-							<th className="plugins-table-source">Active Plugin</th>
-							<th className="plugins-table-dest">Path</th>
+							<th className="plugins-table-name"><strong>Active Plugin</strong></th>
+							<th className="plugins-table-info"><strong>Update</strong></th>
+							<th className="plugins-table-info"><strong>Version</strong></th>
 						</tr>
 						</thead>
 						<tbody>
@@ -106,8 +140,9 @@ module.exports = function( context ) {
 					<table className="table-striped plugins-table">
 						<thead>
 						<tr>
-							<th className="plugins-table-source">Inactive Plugin</th>
-							<th className="plugins-table-dest">Path</th>
+							<th className="plugins-table-name"><strong>Inactive Plugin</strong></th>
+							<th className="plugins-table-info"><strong>Update</strong></th>
+							<th className="plugins-table-info"><strong>Version</strong></th>
 						</tr>
 						</thead>
 						<tbody>

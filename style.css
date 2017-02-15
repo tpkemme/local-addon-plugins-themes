@@ -24,23 +24,16 @@
  */
 .plugins-container{
 	overflow: scroll;
-	display: flex;
-	flexDirection: column;
-	flex: 1;
-	padding: 0 5%;
+	display: block;
     position: relative;
 }
 
-.plugins-container .form-actions {
-    bottom: 0;
-    position: absolute;
-}
-
 .plugins-table {
-    position: absolute;
-    top: 0;
-    display: block;
-    bottom: 53px;
+	position: relative;
+    display: table;
+    border: 1px solid #d3d3d3;
+    margin: 20px 10px;
+    width: 97%;
     overflow-y: auto;
 }
 
@@ -75,11 +68,11 @@
     color: #999;
 }
 
-.plugins-table-source input {
+.plugins-table-name input {
     padding-right: 30px;
 }
 
-td.plugins-table-source .icon {
+td.plugins-table-name .icon {
     position: absolute;
     right: 22px;
     top: 3px;
@@ -87,12 +80,12 @@ td.plugins-table-source .icon {
     display: block;
 }
 
-.plugins-table-source{
+.plugins-table-name{
     width: 70%;
 	position: relative;
 }
 
-.plugins-table-dest{
+.plugins-table-info{
     width: 30%;
 	position: relative;
 }
@@ -163,19 +156,19 @@ td.plugins-table-source .icon {
     color: #999;
 }
 
-td.themes-table-source {
+td.themes-table-name {
     width: 70%;
 }
 
-td.themes-table-source input {
+td.themes-table-name input {
     padding-right: 30px;
 }
 
-td.themes-table-source {
+td.themes-table-name {
     position: relative;
 }
 
-td.themes-table-source .icon {
+td.themes-table-name .icon {
     position: absolute;
     right: 22px;
     top: 3px;
@@ -183,7 +176,7 @@ td.themes-table-source .icon {
     display: block;
 }
 
-td.themes-table-dest {
+td.themes-table-info {
     width: 30%;
 }
 
