@@ -1,5 +1,5 @@
 # Plugins and Themes Addon for Local By Flywheel
-
+![IMG](https://travis-ci.org/tpkemme/local-addon-plugins-themes.svg?branch=master)
 ### [Changelog](./CHANGELOG.md)
 
 ## Description
