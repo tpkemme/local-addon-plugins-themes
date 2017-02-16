@@ -1,23 +1,29 @@
 # Plugins and Themes Addon for Local By Flywheel
 
+### [Changelog](./CHANGELOG.md)
+
 ## Description
+
 Add this addon to Local By Flywheel to see the active and inactive plugins for each site.  This addon currently lists active and inactive themes/plugins.
 
-## Installation for Non-Developers
+## Installation
+
+### Installation for Non-Developers
 
  1. Download the latest release as a zip
  2. Extract contents of zip to desired location
  3. Open Local by Flywheel and go to Settings
  4. Click 'Addons' and 'Install Addon' and choose the location from step 2. 
 
-## Quick Start for Developers
+### Installation for Developers
+
  1. Clone this repo: `git clone git@github.com:JRGould/local-addon-plugins-themes.git local-addon-plugins-themes`
  2. Run `npm install`
  3. Run initial build: `npm run-script build`
  4. Link into Local's `addon` directory: `ln -s "$(pwd)" ~/Library/Application Support/Local by Flywheel/addons`
  5. Restart Local and activate addon from Settings > Addons
 
-## Developing
+## Notes for Developers
 
  - To automatically transpile your JS while developing, just start watch task: `npm run-script watch`.
  - The only thing this starter addon currently does is open dev tools in Local and add a `reload()` function to the window object, type `reload()` into the dev tools console after you've saved/transpiled to see your changes.
@@ -25,15 +31,19 @@ Add this addon to Local By Flywheel to see the active and inactive plugins for e
 
 
 ### Installing Dev Dependencies
+
 `npm install`
 
 ### Folder Structure
+
 All files in `/src` will be transpiled to `/lib` using [Babel](https://github.com/babel/babel/). Anything in `/lib` will be overwritten.
 
 ### Transpiling
+
 `npm run-script build` or `npm run-script watch` to transpile when source files are saved
 
 ### Babel, transpiling, ES6, Node.js, what?
+
 Not familiar with some or any of these terms? Here are a few resources to get you up to speed.
 
 - Node.js
@@ -52,7 +62,7 @@ Not familiar with some or any of these terms? Here are a few resources to get yo
 - [babel-preset-es2015](https://github.com/babel/babel/tree/master/packages): Babel preset for all es2015 plugins.
 - [babel-preset-react](https://github.com/babel/babel/tree/master/packages): Babel preset for all React plugins.
 - [babel-preset-stage-0](https://github.com/babel/babel/tree/master/packages): Babel preset for stage 0 plugins
-
+- [auto-changelog](https://github.com/CookPete/auto-changelog): auto generates a changelog from git tags and commit history
 
 ## License
 
