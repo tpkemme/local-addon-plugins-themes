@@ -122,25 +122,30 @@ module.exports = function( context ) {
             return (
 				<div className="plugins-container">
 					<link rel="stylesheet" href={this.stylesheetPath}/>
+
 					{ this.state.content }
+
+                    <h3 className="plugins-table-title">Active Plugins</h3>
 					<table className="table-striped plugins-table">
 						<thead>
-						<tr>
-							<th className="plugins-table-name"><strong>Active Plugin</strong></th>
+						<tr className="plugin-table-head" >
+							<th className="plugins-table-name"><strong>Name</strong></th>
 							<th className="plugins-table-info"><strong>Update</strong></th>
 							<th className="plugins-table-info"><strong>Version</strong></th>
 						</tr>
 						</thead>
 						<tbody>
+
 						{ this.state.activeContent }
+
 						</tbody>
 					</table>
 
-
+                    <h3 className="plugins-table-title">Inactive Plugins</h3>
 					<table className="table-striped plugins-table">
 						<thead>
-						<tr>
-							<th className="plugins-table-name"><strong>Inactive Plugin</strong></th>
+						<tr className="plugin-table-head" >
+							<th className="plugins-table-name"><strong>Name</strong></th>
 							<th className="plugins-table-info"><strong>Update</strong></th>
 							<th className="plugins-table-info"><strong>Version</strong></th>
 						</tr>
