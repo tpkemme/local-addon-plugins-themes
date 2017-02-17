@@ -1,5 +1,6 @@
+<img align="left" src="https://cloud.githubusercontent.com/assets/3424234/23081445/72ca3f7c-f51a-11e6-9859-cf0dcdfb6577.png" width="100" />
 # Plugins and Themes Addon for Local By Flywheel
-![IMG](https://travis-ci.org/tpkemme/local-addon-plugins-themes.svg?branch=master)
+![Travis CI Build Status](https://travis-ci.org/tpkemme/local-addon-plugins-themes.svg?branch=master)
 ### [Changelog](./CHANGELOG.md)
 
 ## Description
