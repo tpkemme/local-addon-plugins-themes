@@ -2,6 +2,7 @@
 # Plugins and Themes Addon for Local By Flywheel
 
 ![Travis CI Build Status](https://travis-ci.org/tpkemme/local-addon-plugins-themes.svg?branch=master)
+[![StackShare](https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/tpkemme/local-plugin-themes-addon)
 ### [Changelog](./CHANGELOG.md)
 
 ## Description
