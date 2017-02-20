@@ -1,4 +1,4 @@
-<img align="right" src="https://cloud.githubusercontent.com/assets/3424234/23081445/72ca3f7c-f51a-11e6-9859-cf0dcdfb6577.png" width="100" />
+<img align="right" src="https://cloud.githubusercontent.com/assets/3424234/23124996/67b915c8-f735-11e6-8662-74c8326202be.png" width="100" />
 # Plugins and Themes Addon for Local By Flywheel
 
 ![Travis CI Build Status](https://travis-ci.org/tpkemme/local-addon-plugins-themes.svg?branch=master)
@@ -13,7 +13,7 @@
 
 Add this addon to Local By Flywheel to see the active and inactive plugins for each site.  This addon currently lists active and inactive themes/plugins.
 
-![local-addon-plugins-themes](https://cloud.githubusercontent.com/assets/3424234/23084685/336fa4ca-f529-11e6-99bb-d86d274b85bd.gif)
+![local-addon-plugins-themes](https://cloud.githubusercontent.com/assets/3424234/23125040/90227d88-f735-11e6-84e7-f68313ef0e96.gif)
 
 ## Installation
 
@@ -76,6 +76,3 @@ Not familiar with some or any of these terms? Here are a few resources to get yo
 ## License
 
 MIT
-
-## Tech Stack
-<a frameborder="0" data-theme="dark" data-stack-embed="true" data-layers="1,2,3,4" href="https://embed.stackshare.io/stacks/embed/c8e48d55a6443c7f431057c997b056"/></a><script async src="https://cdn1.stackshare.io/javascripts/client-code.js" charset="utf-8"></script>
