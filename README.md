@@ -3,8 +3,6 @@
 [![GitHub release](https://img.shields.io/github/release/tpkemme/local-addon-plugins-themes.svg)](https://github.com/tpkemme/local-addon-plugins-themes/releases/latest)
 ![Travis CI Build Status](https://travis-ci.org/tpkemme/local-addon-plugins-themes.svg?branch=master)
 [![StackShare](https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/tpkemme/local-plugin-themes-addon)
-[![GitHub issues](https://img.shields.io/github/issues/tpkemme/local-addon-plugins-themes.svg)](https://github.com/tpkemme/local-addon-plugins-themes/issues)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/tpkemme/local-addon-plugins-themes/master/LICENSE)
 
 ### [Changelog](./CHANGELOG.md)
 
