@@ -1,11 +1,10 @@
 <img align="right" src="https://cloud.githubusercontent.com/assets/3424234/23124996/67b915c8-f735-11e6-8662-74c8326202be.png" width="100" />
 # Plugins and Themes Addon for Local By Flywheel
-
+[![GitHub release](https://img.shields.io/github/release/tpkemme/local-addon-plugins-themes.svg)](https://github.com/tpkemme/local-addon-plugins-themes/releases/latest)
 ![Travis CI Build Status](https://travis-ci.org/tpkemme/local-addon-plugins-themes.svg?branch=master)
 [![StackShare](https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/tpkemme/local-plugin-themes-addon)
 [![GitHub issues](https://img.shields.io/github/issues/tpkemme/local-addon-plugins-themes.svg)](https://github.com/tpkemme/local-addon-plugins-themes/issues)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/tpkemme/local-addon-plugins-themes/master/LICENSE)
-[![Beerpay](https://beerpay.io/tpkemme/local-addon-plugins-themes/badge.svg?style=flat)](https://beerpay.io/tpkemme/local-addon-plugins-themes)
 
 ### [Changelog](./CHANGELOG.md)
 
@@ -19,7 +18,7 @@ Add this addon to Local By Flywheel to see the active and inactive plugins for e
 
 ### Installation for Non-Developers
 
- 1. Download the latest release as a zip
+ 1. Download the [latest release](https://github.com/tpkemme/local-addon-plugins-themes/releases/latest) as a zip
  2. Extract contents of zip to desired location
  3. Open Local by Flywheel and go to Settings
  4. Click 'Addons' and 'Install Addon' and choose the location from step 2. 
