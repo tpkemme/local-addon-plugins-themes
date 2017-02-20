@@ -26,7 +26,9 @@ module.exports = function( context ) {
 			if ( 'running' === this.props.siteStatus ) {
 				this.getPluginList();
 			} else {
-				this.setState( { content: ( <p>Machine not running!</p> ) } )
+				this.setState( { content: ( <p className="plugins-danger">Machine not running!</p> ) } )
+				this.setState( { activeContent: null} )
+				this.setState( { inactiveContent: null} )
 			}
         }
 
@@ -78,7 +80,7 @@ module.exports = function( context ) {
 		                this.setState( { activeContent: plugins.map( (item) =>
 							<tr>
 								<td className="plugins-table-name" key={ plugins.indexOf(item) }>{ item.trim().split( "," )[0] }</td>
-								<td className="plugins-table-info">{ item.trim().split( "," )[2] }</td>
+								<td className={ item.trim().split( "," )[2] + " plugins-table-info" } >{ item.trim().split( "," )[2] }</td>
 								<td className="plugins-table-info">{ item.trim().split( "," )[3] }</td>
 							</tr> ) } )
 		            } else {
@@ -92,24 +94,39 @@ module.exports = function( context ) {
 		        }
 		    } );
 
-		    // construct command using bundled docker binary to execute 'wp plugin list' inside container for active plugins
+			// construct command using bundled docker binary to execute 'wp plugin list' inside container for inactive plugins
 		    let inactiveCommand = `${context.environment.dockerPath} exec ${site.container} wp plugin list --status=inactive --path=/app/public --format=csv --allow-root`
 
 		    // execute command in docker env and run callback when it returns
 		    childProcess.exec( inactiveCommand, { env: context.environment.dockerEnv }, (error, stdout, stderr) => {
 		        // Display error message if there's an issue
 		        if (error) {
-		            this.setState( { inactiveContent:  <tr><td className="plugins-table-name">Error retrieving inactive plugin list: <pre>{ stderr }</pre></td><td className="plugins-table-info"> - </td></tr> } )
+		            this.setState( { inactiveContent:
+						<tr>
+							<td className="plugins-table-name">Error retrieving inactive plugin: <pre>{ stderr }</pre></td>
+							<td className="plugins-table-info"> - </td>
+							<td className="plugins-table-info"> - </td>
+						</tr> } )
 		        } else {
 		            // split list into array
 		            let plugins = stdout.trim().split( "\n" )
-					plugins.splice(0, 1);
+					plugins.splice(0, 1)
 
-					// Only create unordered list if there are plugins to list
+		            // Only create unordered list if there are plugins to list
 		            if ( plugins.length && plugins[0].length > 1 ) {
-		                this.setState( { inactiveContent: plugins.map( (item) => <tr><td className="plugins-table-name" key={ plugins.indexOf(item) }>{ item.trim().split( "," )[0] }</td><td className="plugins-table-info">{ item.trim().split( "," )[2] }</td><td className="plugins-table-info">{ item.trim().split( "," )[3] }</td></tr> ) } )
+		                this.setState( { inactiveContent: plugins.map( (item) =>
+							<tr>
+								<td className="plugins-table-name" key={ plugins.indexOf(item) }>{ item.trim().split( "," )[0] }</td>
+								<td className={ item.trim().split( "," )[2] + " plugins-table-info" } >{ item.trim().split( "," )[2] }</td>
+								<td className="plugins-table-info">{ item.trim().split( "," )[3] }</td>
+							</tr> ) } )
 		            } else {
-		                this.setState( { inactiveContent: <tr><td className="plugins-table-name">No inactive plugins.</td><td className="plugins-table-info"> - </td></tr> } )
+		                this.setState( { inactiveContent:
+							<tr>
+								<td className="plugins-table-name">No inactive plugins.</td>
+								<td className="plugins-table-info"> - </td>
+								<td className="plugins-table-info"> - </td>
+							</tr> } )
 		            }
 		        }
 		    } );

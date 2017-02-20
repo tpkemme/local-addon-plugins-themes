@@ -111,14 +111,15 @@ td.plugins-table-name .icon {
 .plugins-table td {
     padding: 5px 15px;
     border-right: 1px solid #ddd;
+	font-size: 14px;
 }
 
-.plugins-table tr:not( .plugin-table-head ):hover {
-    background: #fbfbff;
-    -webkit-box-shadow: 0px 0px 20px -3px rgb(121, 121, 121) !important;
-    -moz-box-shadow: 0px 0px 25px 5px rgba(138,138,138,1) !important;
-    box-shadow: 0px 0px 20px -3px rgb(121, 121, 121) !important;
-}
+/*.plugins-table tr:not( .plugin-table-head ):hover {
+    background: #f4f4ff;
+    -webkit-box-shadow: inset 0px 0px 15px -7px #6f6f6f !important;
+    -moz-box-shadow: inset 0px 0px 15px -7px #6f6f6f !important;
+    box-shadow: inset 0px 0px 15px -7px #6f6f6f !important;
+}*/
 
 .plugins-table td:nth-child(2),
 .plugins-table th:nth-child(2){
@@ -130,6 +131,17 @@ td.plugins-table-name .icon {
     text-align: right;
 }
 
+.plugins-danger{
+    margin: 15px;
+    background: pink;
+    border: 1px solid red;
+    padding: 6px;
+    width: 140px
+}
+
+.available{
+	color: #34c84a;
+}
 
 /**
  *  _____ _
@@ -139,83 +151,119 @@ td.plugins-table-name .icon {
  *   | | | | | |  __/ | | | | |  __/\__ \
  *   \_/ |_| |_|\___|_| |_| |_|\___||___/
  */
-.themes-container{
-	overflow: scroll;
-	display: flex;
-	flexDirection: column;
-	flex: 1;
-	padding: 0 5%;
-    position: relative;
-}
+ .themes-container{
+ 	overflow: scroll;
+ 	display: block;
+     position: relative;
+ }
 
-.themes-container .form-actions {
-    bottom: 0;
-    position: absolute;
-}
+ .themes-table {
+ 	position: relative;
+     display: table;
+     border: 1px solid #d3d3d3;
+     margin: 20px 10px;
+     width: 97%;
+     overflow-y: auto;
+ }
 
-.themes-table {
-    position: absolute;
-    top: 0;
-    display: block;
-    bottom: 53px;
-    overflow-y: auto;
-}
+ .themes-table tr:active {
+     color: inherit !important;
+     background: inherit !important;
+ }
 
-.themes-table tr:active {
-    color: inherit !important;
-    background: inherit !important;
-}
+ .themes-table.table-striped tr:nth-child(even):active {
+     background: #f5f5f4 !important;
+ }
 
-.themes-table.table-striped tr:nth-child(even):active {
-    background: #f5f5f4 !important;
-}
+ .themes-table input {
+     padding: 0;
+     border: 0;
+     background: transparent;
+     width: 100%;
+ }
 
-.themes-table input {
-    padding: 0;
-    border: 0;
-    background: transparent;
-    width: 100%;
-}
+ .themes-table td {
+     padding: 0 15px;
+ }
 
-.themes-table td {
-    padding: 0 15px;
-}
+ .themes-table input {
+     width: 100%;
+     border: 0;
+     padding: 3px 4px;
+     text-overflow: ellipsis;
+ }
 
-.themes-table input {
-    width: 100%;
-    border: 0;
-    padding: 3px 4px;
-    text-overflow: ellipsis;
-}
+ .themes-table .icon-cancel-circled {
+     color: #999;
+ }
 
-.themes-table .icon-cancel-circled {
-    color: #999;
-}
+ .themes-table-name input {
+     padding-right: 30px;
+ }
 
-td.themes-table-name {
-    width: 70%;
-}
+ td.themes-table-name .icon {
+     position: absolute;
+     right: 22px;
+     top: 3px;
+     color: #999;
+     display: block;
+ }
 
-td.themes-table-name input {
-    padding-right: 30px;
-}
+ .themes-table-name{
+     width: 60%;
+ 	display: inline-block;
+ 	position: relative;
+ }
 
-td.themes-table-name {
-    position: relative;
-}
+ .themes-table-info{
+     width: 20%;
+ 	display: inline-block;
+ 	position: relative;
+ }
 
-td.themes-table-name .icon {
-    position: absolute;
-    right: 22px;
-    top: 3px;
-    color: #999;
-    display: block;
-}
+ .themes-table input:focus {
+     outline: -webkit-focus-ring-color solid 2px;
+ }
 
-td.themes-table-info {
-    width: 30%;
-}
+ .themes-table-title {
+     margin: 10px 12px -15px;
+ }
 
-.themes-table input:focus {
-    outline: -webkit-focus-ring-color solid 2px;
-}
+ .themes-table td:last-child {
+     border-right: none;
+ }
+
+ .themes-table td:first-letter {
+     text-transform: uppercase;
+ }
+
+ .themes-table td {
+     padding: 5px 15px;
+     border-right: 1px solid #ddd;
+ 	font-size: 14px;
+ }
+
+ /*.themes-table tr:not( .theme-table-head ):hover {
+     background: #f4f4ff;
+     -webkit-box-shadow: inset 0px 0px 15px -7px #6f6f6f !important;
+     -moz-box-shadow: inset 0px 0px 15px -7px #6f6f6f !important;
+     box-shadow: inset 0px 0px 15px -7px #6f6f6f !important;
+ }*/
+
+ .themes-table td:nth-child(2),
+ .themes-table th:nth-child(2){
+     text-align: center;
+ }
+
+ .themes-table td:nth-child(3),
+ .themes-table th:nth-child(3){
+     text-align: right;
+ }
+
+ .themes-danger{
+     margin: 15px;
+     background: pink;
+     border: 1px solid red;
+     padding: 6px;
+     width: 140px
+ }
