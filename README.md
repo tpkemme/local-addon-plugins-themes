@@ -1,8 +1,8 @@
-<img align="right" src="https://cloud.githubusercontent.com/assets/3424234/23124996/67b915c8-f735-11e6-8662-74c8326202be.png" width="100" />
 # Plugins and Themes Addon for Local By Flywheel
 [![GitHub release](https://img.shields.io/github/release/tpkemme/local-addon-plugins-themes.svg)](https://github.com/tpkemme/local-addon-plugins-themes/releases/latest)
 ![Travis CI Build Status](https://travis-ci.org/tpkemme/local-addon-plugins-themes.svg?branch=master)
 [![StackShare](https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/tpkemme/local-plugin-themes-addon)
+<img align="right" src="https://cloud.githubusercontent.com/assets/3424234/23124996/67b915c8-f735-11e6-8662-74c8326202be.png" width="100" />
 
 ### [Changelog](./CHANGELOG.md)
 
