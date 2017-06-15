@@ -8,7 +8,7 @@
 
 ## Description
 
-Add this addon to Local By Flywheel to see the active and inactive plugins for each site.  This addon currently lists active and inactive themes/plugins.
+Add this addon to Local By Flywheel to see the active and inactive plugins for each site.  This addon currently lists active and inactive themes/plugins.  Now completely functional with Local by Flywheel v2.0.  This addon will no longer work for Local versions less than 2.0
 
 ![local-addon-plugins-themes](https://cloud.githubusercontent.com/assets/3424234/23125040/90227d88-f735-11e6-84e7-f68313ef0e96.gif)
 
@@ -26,7 +26,7 @@ Add this addon to Local By Flywheel to see the active and inactive plugins for e
  1. Clone this repo: `git clone git@github.com:JRGould/local-addon-plugins-themes.git local-addon-plugins-themes`
  2. Run `npm install`
  3. Run initial build: `npm run-script build`
- 4. Link into Local's `addon` directory: `ln -s "$(pwd)" ~/Library/Application Support/Local by Flywheel/addons`
+ 4. Link into Local's `addon` directory: `ln -s "$(pwd)" ~/Library/Application\ Support/Local\ by\ Flywheel/addons`
  5. Restart Local and activate addon from Settings > Addons
 
 ## Notes for Developers
